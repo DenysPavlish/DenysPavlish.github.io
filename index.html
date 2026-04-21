@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PavlishShop — ігри для геймерів</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <a class="logo" href="#"><span>pavlish</span>shop</a>
+  <nav>
+    <a href="#">Каталог</a>
+    <a href="#">Нові</a>
+    <a href="#">Акції</a>
+    <a href="#">Про нас</a>
+  </nav>
+  <button class="cart-btn" onclick="openCart()">
+     Кошик
+    <span class="cart-count" id="cartCount">0</span>
+  </button>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>Ігри для <em>Компа</em> Швидко та дешево.</h1>
+    <p>Цифрові ключі — одразу на пошту після оплати. Без підписок, без зайвого.</p>
+  </div>
+  <div class="hero-badge">
+    Ігор у каталозі
+    <b id="totalGames">0</b>
+  </div>
+</section>
+
+<div class="toolbar">
+  <div class="search-wrap">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="searchInput" placeholder="Пошук гри..." oninput="filterGames()"/>
+  </div>
+  <div class="filter-btns">
+    <button class="filter-btn active" onclick="setFilter('all', this)">Всі</button>
+    <button class="filter-btn" onclick="setFilter('action', this)">Екшн</button>
+    <button class="filter-btn" onclick="setFilter('rpg', this)">RPG</button>
+    <button class="filter-btn" onclick="setFilter('strategy', this)">Стратегія</button>
+    <button class="filter-btn" onclick="setFilter('sport', this)">Спорт</button>
+    <button class="filter-btn" onclick="setFilter('indie', this)">Інді</button>
+  </div>
+</div>
+
+<main>
+  <div class="section-label">// каталог</div>
+  <div class="games-grid" id="gamesGrid"></div>
+  <div class="no-results" id="noResults" style="display:none">Нічого не знайдено 🙁</div>
+</main>
+
+<footer>
+  <span>© 2026 PavlishShop</span>
+  <span>Підтримка: support@pavlishshop.ua</span>
+  <span>Всі ціни в гривнях (UAH)</span>
+</footer>
+
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h2>Кошик</h2>
+    <button class="close-btn" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <p class="cart-empty">Кошик порожній</p>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Разом:</span>
+      <span id="cartTotal">0 ₴</span>
+    </div>
+    <button class="checkout-btn" onclick="checkout()">Оформити замовлення </button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
